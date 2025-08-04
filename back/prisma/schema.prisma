@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Reserver {
+  id       Int      @id @default(autoincrement())
+  city String   
+  reg    String  
+  lat Float
+  lng Float
+}
+
+model LoraData {
+  id    String  @id @default(uuid())
+  data  String
+  rssi  Float
+  snr   Float
+  createdAt DateTime @default(now())
+}
